@@ -1,0 +1,12 @@
+---
+development:
+  dialect: "sqlite3"
+  database: .db\api_api_development.sqlite
+
+test:
+  dialect: "sqlite3"
+  database: .db\api_api_test.sqlite
+
+production:
+  dialect: "sqlite3"
+  database: .db\api_api_production.sqlite

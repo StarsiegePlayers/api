@@ -1,0 +1,9 @@
+[[plugin]]
+  binary = "buffalo-goth"
+  go_get = "github.com/gobuffalo/buffalo-goth"
+  tags = ["sqlite"]
+
+[[plugin]]
+  binary = "buffalo-pop"
+  go_get = "github.com/gobuffalo/buffalo-pop/v2"
+  tags = ["sqlite"]
