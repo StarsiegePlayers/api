@@ -3,6 +3,7 @@ module github.com/StarsiegePlayers/api
 go 1.15
 
 require (
+	github.com/StarsiegePlayers/darkstar-query-go v0.0.0-20210215063634-6cfe0a045bdc
 	github.com/gobuffalo/buffalo v0.15.5
 	github.com/gobuffalo/buffalo-goth v1.3.0 // indirect
 	github.com/gobuffalo/buffalo-pop/v2 v2.3.0
@@ -20,6 +21,8 @@ require (
 	github.com/gofrs/uuid v3.2.0+incompatible
 	github.com/markbates/goth v1.67.1
 	github.com/pkg/errors v0.9.1
+	github.com/robfig/cron/v3 v3.0.0
 	github.com/rs/cors v1.7.0
+	github.com/sirupsen/logrus v1.4.2
 	github.com/unrolled/secure v0.0.0-20190103195806-76e6d4e9b90c
 )

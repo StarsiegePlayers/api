@@ -1,22 +1,25 @@
 package actions
 
 import (
+	"github.com/robfig/cron/v3"
+	"net/http"
+
+	"github.com/StarsiegePlayers/api/models"
+	"github.com/StarsiegePlayers/api/workers"
+
 	"github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/buffalo-pop/v2/pop/popmw"
 	"github.com/gobuffalo/envy"
+	contenttype "github.com/gobuffalo/mw-contenttype"
 	forcessl "github.com/gobuffalo/mw-forcessl"
 	i18n "github.com/gobuffalo/mw-i18n"
 	paramlogger "github.com/gobuffalo/mw-paramlogger"
 	"github.com/gobuffalo/packr/v2"
-	"github.com/unrolled/secure"
-	"net/http"
-
-	"github.com/StarsiegePlayers/api/models"
-	"github.com/gobuffalo/buffalo-pop/v2/pop/popmw"
-	contenttype "github.com/gobuffalo/mw-contenttype"
 	"github.com/gobuffalo/x/sessions"
-	"github.com/rs/cors"
 
 	"github.com/markbates/goth/gothic"
+	"github.com/rs/cors"
+	"github.com/unrolled/secure"
 )
 
 // ENV is used to help switch settings based on where the
@@ -24,6 +27,7 @@ import (
 var ENV = envy.Get("GO_ENV", "development")
 var app *buffalo.App
 var T *i18n.Translator
+var appCron *cron.Cron
 
 // App is where all routes and middleware for buffalo
 // should be defined. This is the nerve center of your
@@ -47,7 +51,10 @@ func App() *buffalo.App {
 				cors.Default().Handler,
 			},
 			SessionName: "_api_session",
+			WorkerOff: true,
 		})
+
+		workers.InitCron(Cron(), app)
 
 		// Automatically redirect to SSL
 		app.Use(forceSSL())
@@ -71,6 +78,9 @@ func App() *buffalo.App {
 		apiV1.GET("/", HomeHandler) // TODO: replace with swagger callback
 		//apiV1.Use(Authorize)
 
+		multiplayer := apiV1.Group("/multiplayer")
+		multiplayer.GET("/servers", ServerListHandler)
+
 		auth := apiV1.Group("/auth")
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
 		auth.GET("/{provider}", bah)
@@ -82,6 +92,15 @@ func App() *buffalo.App {
 	}
 
 	return app
+}
+
+func Cron() *cron.Cron {
+	if appCron == nil {
+		appCron = cron.New()
+		appCron.Start()
+	}
+
+	return appCron
 }
 
 // translations will load locale files, set up the translator `actions.T`,

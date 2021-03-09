@@ -17,6 +17,8 @@ func main() {
 	if err := app.Serve(); err != nil {
 		log.Fatal(err)
 	}
+
+	actions.Cron().Stop()
 }
 
 /*
