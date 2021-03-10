@@ -1,0 +1,23 @@
+[[scenario]]
+    name = "default users"
+
+    [[scenario.table]]
+        name = "users"
+
+        [[scenario.table.row]]
+            id = "<%= uuidNamed("neo") %>"
+            name = "neo"
+            email = "neo@email.invalid"
+            provider = "discord"
+            provider_id = "<%= uuidNamed("discord") %>"
+            created_at = "<%= now() %>"
+            updated_at = "<%= now() %>"
+
+        [[scenario.table.row]]
+            id = "<%= uuidNamed("cmd276") %>"
+            name = "cmd276"
+            email = "cmd276@email.invalid"
+            provider = "discord"
+            provider_id = "<%= uuidNamed("discord") %>"
+            created_at = "<%= now() %>"
+            updated_at = "<%= now() %>"

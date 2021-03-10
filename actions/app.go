@@ -1,11 +1,9 @@
 package actions
 
 import (
-	"github.com/robfig/cron/v3"
-	"net/http"
-
 	"github.com/StarsiegePlayers/api/models"
 	"github.com/StarsiegePlayers/api/workers"
+	"github.com/robfig/cron/v3"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo-pop/v2/pop/popmw"
@@ -72,10 +70,8 @@ func App() *buffalo.App {
 
 		app.Use(SetCurrentUser)
 		api := app.Group("/api")
-		api.GET("/", HomeHandler) // TODO: replace with swagger callback
 
 		apiV1 := api.Group("/v1")
-		apiV1.GET("/", HomeHandler) // TODO: replace with swagger callback
 		//apiV1.Use(Authorize)
 
 		multiplayer := apiV1.Group("/multiplayer")
@@ -88,7 +84,7 @@ func App() *buffalo.App {
 		auth.Middleware.Skip(Authorize, bah, AuthCallback)
 		auth.GET("/{provider}/callback", AuthCallback)
 
-		app.ServeFiles("/", http.Dir("./public"))
+		// app.ServeFiles("/", http.Dir("./public"))
 	}
 
 	return app

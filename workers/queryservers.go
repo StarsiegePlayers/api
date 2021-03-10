@@ -28,25 +28,32 @@ func UpdateServerList() {
 
 func performServerListUpdate() {
 	errors := make([]string, 0)
-	masters := []string{
-		"master1.starsiegeplayers.com:29000",
-		"master2.starsiegeplayers.com:29000",
-		"master3.starsiegeplayers.com:29000",
-		"starsiege1.no-ip.org:29000",
-		"starsiege.noip.us:29000",
-		"southerjustice.dyndns-server.com:29000",
-		"dustersteve.ddns.net:29000",
-		"starsiege.from-tx.com:29000",
+	masterQueryOptions := query.Options{
+		Search: []string {
+			"master1.starsiegeplayers.com:29000",
+			"master2.starsiegeplayers.com:29000",
+			"master3.starsiegeplayers.com:29000",
+			"starsiege1.no-ip.org:29000",
+			"starsiege.noip.us:29000",
+			"southerjustice.dyndns-server.com:29000",
+			"dustersteve.ddns.net:29000",
+			"starsiege.from-tx.com:29000",
+		},
+		Timeout: 5 * time.Second,
 	}
 
-	masterServerInfo, gameAddresses, errs := query.Masters(masters)
+	masterServerInfo, gameAddresses, errs := query.Masters(masterQueryOptions)
 	if len(errs) >= 0 {
 		for _, v := range errs {
 			errors = append(errors, v.Error())
 		}
 	}
 
-	games, errs := query.Servers(gameAddresses)
+	serverQueryOptions := query.Options{
+		Search:  gameAddresses,
+		Timeout: 5 * time.Second,
+	}
+	games, errs := query.Servers(serverQueryOptions)
 	for _, err := range errs {
 		errors = append(errors, err.Error())
 	}

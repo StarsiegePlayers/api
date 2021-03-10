@@ -25,7 +25,8 @@ dist/
 generated/
 .vendor/
 .db/
-**/*.pem
+*.pem
+*.tar
 
 ### Go template
 # Binaries for programs and plugins

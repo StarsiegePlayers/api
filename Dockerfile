@@ -16,7 +16,7 @@ COPY go.sum go.sum
 RUN go mod download
 
 ADD . .
-RUN buffalo build --static -o /bin/app
+RUN buffalo build -o /bin/api
 
 FROM alpine
 RUN apk add --no-cache bash
@@ -24,16 +24,19 @@ RUN apk add --no-cache ca-certificates
 
 WORKDIR /bin/
 
-COPY --from=builder /bin/app .
+COPY --from=builder /bin/api .
 
 # Uncomment to run the binary in "production" mode:
-# ENV GO_ENV=production
+ENV GO_ENV=production
 
-# Bind the app to 0.0.0.0 so it can be seen from outside the container
+# Bind the api to 0.0.0.0 so it can be seen from outside the container
 ENV ADDR=0.0.0.0
 
-EXPOSE 3000
+EXPOSE 5050
 
 # Uncomment to run the migrations before running the binary:
-# CMD /bin/app migrate; /bin/app
-CMD exec /bin/app
+# CMD /bin/api migrate; /bin/api
+CMD exec /bin/api
+
+FROM scratch AS export-stage
+COPY --from=builder /bin/api /
