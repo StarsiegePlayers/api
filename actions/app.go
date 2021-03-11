@@ -49,7 +49,7 @@ func App() *buffalo.App {
 				cors.Default().Handler,
 			},
 			SessionName: "_api_session",
-			WorkerOff: true,
+			WorkerOff:   true,
 		})
 
 		workers.InitCron(Cron(), app)

@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
-	github.com/StarsiegePlayers/darkstar-query-go v1.0.0
+	github.com/StarsiegePlayers/darkstar-query-go v1.1.0
 	github.com/cockroachdb/cockroach-go v2.0.1+incompatible // indirect
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect

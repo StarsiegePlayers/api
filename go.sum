@@ -53,6 +53,8 @@ github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/StarsiegePlayers/darkstar-query-go v1.0.0 h1:01ZhQv9kyiGaC7CRD58jPH46nXQAFWHh5s4ahiW9hds=
 github.com/StarsiegePlayers/darkstar-query-go v1.0.0/go.mod h1:32Dtfins3QOvq5FF44tJZNmV+kyai6rtsxT+ugT0kgg=
+github.com/StarsiegePlayers/darkstar-query-go v1.1.0 h1:EbqGJovzea48nuBA68Q7TC4lQ9XLsO4Sxc5mUyk2FTQ=
+github.com/StarsiegePlayers/darkstar-query-go v1.1.0/go.mod h1:32Dtfins3QOvq5FF44tJZNmV+kyai6rtsxT+ugT0kgg=
 github.com/ajg/form v0.0.0-20160822230020-523a5da1a92f/go.mod h1:uL1WgH+h2mgNtvBq0339dVnzXdBETtL2LeUXaIv25UY=
 github.com/ajg/form v1.5.1/go.mod h1:uL1WgH+h2mgNtvBq0339dVnzXdBETtL2LeUXaIv25UY=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=

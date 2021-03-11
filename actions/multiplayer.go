@@ -1,9 +1,10 @@
 package actions
 
 import (
+	"net/http"
+
 	"github.com/StarsiegePlayers/api/workers"
 	"github.com/gobuffalo/buffalo"
-	"net/http"
 )
 
 // ServerListHandler is a handler to serve up
@@ -12,4 +13,3 @@ func ServerListHandler(c buffalo.Context) error {
 
 	return c.Render(http.StatusOK, r.JSON(workers.GetServerList()))
 }
-

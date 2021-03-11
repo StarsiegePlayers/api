@@ -2,10 +2,11 @@ package actions
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/StarsiegePlayers/api/models"
 	"github.com/gobuffalo/x/defaults"
 	"github.com/pkg/errors"
-	"os"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop"

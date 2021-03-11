@@ -1,10 +1,11 @@
 package workers
 
 import (
-	query "github.com/StarsiegePlayers/darkstar-query-go"
 	"time"
 
+	query "github.com/StarsiegePlayers/darkstar-query-go"
 	"github.com/StarsiegePlayers/darkstar-query-go/master"
+	"github.com/StarsiegePlayers/darkstar-query-go/protocol"
 	"github.com/StarsiegePlayers/darkstar-query-go/server"
 )
 
@@ -28,8 +29,8 @@ func UpdateServerList() {
 
 func performServerListUpdate() {
 	errors := make([]string, 0)
-	masterQueryOptions := query.Options{
-		Search: []string {
+	masterQueryOptions := protocol.Options{
+		Search: []string{
 			"master1.starsiegeplayers.com:29000",
 			"master2.starsiegeplayers.com:29000",
 			"master3.starsiegeplayers.com:29000",
@@ -49,7 +50,7 @@ func performServerListUpdate() {
 		}
 	}
 
-	serverQueryOptions := query.Options{
+	serverQueryOptions := protocol.Options{
 		Search:  gameAddresses,
 		Timeout: 5 * time.Second,
 	}
@@ -58,7 +59,7 @@ func performServerListUpdate() {
 		errors = append(errors, err.Error())
 	}
 
-	serverListData = ServerListData {
+	serverListData = ServerListData{
 		RequestTime: time.Now(),
 		Masters:     masterServerInfo,
 		Games:       games,
