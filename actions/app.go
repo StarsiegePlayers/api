@@ -1,6 +1,8 @@
 package actions
 
 import (
+	"net/http"
+
 	"github.com/StarsiegePlayers/api/models"
 	"github.com/StarsiegePlayers/api/workers"
 	"github.com/robfig/cron/v3"
@@ -75,7 +77,8 @@ func App() *buffalo.App {
 		//apiV1.Use(Authorize)
 
 		multiplayer := apiV1.Group("/multiplayer")
-		multiplayer.GET("/servers", ServerListHandler)
+		multiplayer.GET("/servers", ServerListLastUpdated(ServerListHandler))
+		multiplayer.HEAD("/servers", ServerListLastUpdated(EmptyRoute))
 
 		auth := apiV1.Group("/auth")
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
@@ -88,6 +91,10 @@ func App() *buffalo.App {
 	}
 
 	return app
+}
+
+func EmptyRoute(c buffalo.Context) error {
+	return c.Render(http.StatusOK, r.String(""))
 }
 
 func Cron() *cron.Cron {
