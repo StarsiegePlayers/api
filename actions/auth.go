@@ -5,13 +5,12 @@ import (
 	"os"
 
 	"github.com/StarsiegePlayers/api/models"
+	"github.com/gobuffalo/nulls"
 	"github.com/gobuffalo/x/defaults"
 	"github.com/pkg/errors"
 
 	"github.com/gobuffalo/buffalo"
-	"github.com/gobuffalo/pop"
-	"github.com/gobuffalo/pop/nulls"
-
+	"github.com/gobuffalo/pop/v5"
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/discord"

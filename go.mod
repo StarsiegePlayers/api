@@ -4,7 +4,6 @@ go 1.15
 
 require (
 	github.com/StarsiegePlayers/darkstar-query-go v1.1.2
-	github.com/cockroachdb/cockroach-go v2.0.1+incompatible // indirect
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/felixge/httpsnoop v1.0.2 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
@@ -20,9 +19,8 @@ require (
 	github.com/gobuffalo/nulls v0.4.0
 	github.com/gobuffalo/packr/v2 v2.8.1
 	github.com/gobuffalo/plush/v4 v4.1.5 // indirect
-	github.com/gobuffalo/pop v4.13.1+incompatible
 	github.com/gobuffalo/pop/v5 v5.3.4
-	github.com/gobuffalo/suite v2.8.2+incompatible
+	github.com/gobuffalo/suite/v3 v3.0.2
 	github.com/gobuffalo/validate/v3 v3.3.0
 	github.com/gobuffalo/x v0.1.0
 	github.com/gofrs/uuid v4.0.0+incompatible

@@ -80,6 +80,9 @@ func App() *buffalo.App {
 		multiplayer.GET("/servers", ServerListLastUpdated(ServerListHandler))
 		multiplayer.HEAD("/servers", ServerListLastUpdated(EmptyRoute))
 
+		multiplayer.GET("/servers/stats", ServerStatisticsLastUpdated(ServerStatistics))
+		multiplayer.HEAD("/servers/stats", ServerStatisticsLastUpdated(EmptyRoute))
+
 		auth := apiV1.Group("/auth")
 		bah := buffalo.WrapHandlerFunc(gothic.BeginAuthHandler)
 		auth.GET("/{provider}", bah)
